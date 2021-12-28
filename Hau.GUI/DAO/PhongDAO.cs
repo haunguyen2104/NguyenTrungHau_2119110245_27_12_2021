@@ -22,19 +22,19 @@ namespace Hau.GUI.DAO
             while (reader.Read())
             {
                 PhongDTO phg = new PhongDTO();
-                phg.MaPhong = int.Parse(reader["id"].ToString());
-                phg.TenPhong = reader["name"].ToString();
+                phg.MaPhong = int.Parse(reader["MaPhong"].ToString());
+                phg.TenPhong = reader["TenPhong"].ToString();
                 lstphg.Add(phg);
             }
             conn.Close();
             return lstphg;
         }
-        public PhongDTO ReadPhong(int id)
+        public PhongDTO ReadPhong(int MaPhong)
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
             SqlCommand cmd = new SqlCommand(
-                "select * from phgs where id=" + id.ToString(), conn);
+                "select * from Phong where MaPhong=" + MaPhong.ToString(), conn);
             PhongDTO phg = new PhongDTO();
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows && reader.Read())

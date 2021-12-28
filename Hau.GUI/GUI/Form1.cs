@@ -56,6 +56,7 @@ namespace Hau.GUI
 
         private void dataView_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+            /*
             int index = e.RowIndex;
             DataGridViewRow row = dataView.Rows[index];
             if (row.Cells[0].Value != null)
@@ -68,6 +69,7 @@ namespace Hau.GUI
                 tbNoiSinh.Text = row.Cells[4].Value.ToString();
                 cbPhong.Text = row.Cells[5].Value.ToString();
             }
+            */
         }
 
         private void dataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -80,7 +82,7 @@ namespace Hau.GUI
             List<NhanVienDTO> lstCus = cusBLL.ReadNhanVien();
             foreach (NhanVienDTO cus in lstCus)
             {
-                dataView.Rows.Add(cus.MaNV, cus.TenNV, cus.NgaySinh,cus.GioiTinh,cus.NoiSinh,cus.TenPhong);
+                dataView.Rows.Add(cus.MaNV, cus.TenNV, cus.NgaySinh,cus.GioiTinh,cus.NoiSinh,cus.MaPhong);
             }
             List<PhongDTO> lstPhong= phgBLL.ReadPhongList();
             foreach (PhongDTO phong in lstPhong)

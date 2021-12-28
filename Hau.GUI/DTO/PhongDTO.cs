@@ -10,5 +10,6 @@ namespace Hau.GUI.DTO
     {
         public int MaPhong { get; set; }
         public string TenPhong { get; set; }
+        public List<NhanVienDTO> NhanViens { get; set; }
     }
 }

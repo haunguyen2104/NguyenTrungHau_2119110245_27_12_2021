@@ -44,7 +44,7 @@ namespace Hau.GUI.DAO
             SqlCommand cmd = new SqlCommand("Update NhanVien set TenNV=@TenNV,MaPhong=@MaPhong where MaNV=@MaNV", conn);
             cmd.Parameters.Add(new SqlParameter("@MaNV", cus.MaNV));
             cmd.Parameters.Add(new SqlParameter("@TenNV", cus.TenNV));
-            cmd.Parameters.Add(new SqlParameter("@MaPhong", cus.TenPhong.MaPhong));
+            cmd.Parameters.Add(new SqlParameter("@MaPhong", cus.MaPhong));
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -66,7 +66,7 @@ namespace Hau.GUI.DAO
             SqlCommand cmd = new SqlCommand("insert into NhanVien values(@MaNV,@TenNV,@MaPhong) ", conn);
             cmd.Parameters.Add(new SqlParameter("@MaNV", cus.MaNV));
             cmd.Parameters.Add(new SqlParameter("@TenNV", cus.TenNV));
-            cmd.Parameters.Add(new SqlParameter("@MaPhong", cus.TenPhong.MaPhong));
+            cmd.Parameters.Add(new SqlParameter("@MaPhong", cus.MaPhong));
             cmd.ExecuteNonQuery();
             conn.Close();
         }
