@@ -10,23 +10,25 @@ namespace Hau.GUI.BLL
 {
     public class NhanVienBLL
     {
+
         NhanVienDAO dao = new NhanVienDAO();
+        
         public List<NhanVienDTO> ReadNhanVien()
         {
-            List<NhanVienDTO> lstCus = dao.ReadNhanVien();
-            return lstCus;
+            List<NhanVienDTO> lstNV = dao.ReadNhanVien();
+            return lstNV;
         }
-        public void NewNhanVien(NhanVienDTO cus)
+        public void NewNhanVien(NhanVienDTO NV)
         {
-            dao.NewNhanVien(cus);
+            dao.NewNhanVien(NV);
         }
-        public void DeleteNhanVien(NhanVienDTO cus)
+        public void DeleteNhanVien(NhanVienDTO NV)
         {
-            dao.DeleteNhanVien(cus);
+            dao.DeleteNhanVien(NV);
         }
-       public void EditNhanVien(NhanVienDTO cus)
+       public void EditNhanVien(NhanVienDTO NV)
         {
-            dao.EditNhanVien(cus)
+            dao.EditNhanVien(NV);
         }
     }
 }
