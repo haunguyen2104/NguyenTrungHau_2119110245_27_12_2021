@@ -16,5 +16,38 @@ namespace Hau.GUI
         {
             InitializeComponent();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn thoát?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            tbMa.Text = "";
+            tbTen.Text = "";
+            dtNgaySinh.Value = DateTime.Now;
+            ckbGioiTinh.Checked = false;
+            tbNoiSinh.Text = "";
+            cbPhong.Text = "";
+        }
     }
 }

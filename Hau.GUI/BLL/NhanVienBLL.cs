@@ -24,9 +24,9 @@ namespace Hau.GUI.BLL
         {
             dao.DeleteNhanVien(cus);
         }
-        public void EditNhanVien(NhanVienDTO cus)
+       public void EditNhanVien(NhanVienDTO cus)
         {
-            dao.EditNhanVien(cus);
+            dao.EditNhanVien(cus)
         }
     }
 }

@@ -68,6 +68,7 @@ namespace Hau.GUI
             this.btnExit.TabIndex = 0;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnClear
             // 
@@ -77,6 +78,7 @@ namespace Hau.GUI
             this.btnClear.TabIndex = 0;
             this.btnClear.Text = "Làm mới";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnEdit
             // 
@@ -86,6 +88,7 @@ namespace Hau.GUI
             this.btnEdit.TabIndex = 0;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -95,6 +98,7 @@ namespace Hau.GUI
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBox2
             // 
@@ -118,6 +122,7 @@ namespace Hau.GUI
             this.btnDel.TabIndex = 0;
             this.btnDel.Text = "Xóa";
             this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // cbPhong
             // 
@@ -139,6 +144,7 @@ namespace Hau.GUI
             // 
             // dtNgaySinh
             // 
+            this.dtNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtNgaySinh.Location = new System.Drawing.Point(127, 86);
             this.dtNgaySinh.Name = "dtNgaySinh";
             this.dtNgaySinh.Size = new System.Drawing.Size(200, 22);

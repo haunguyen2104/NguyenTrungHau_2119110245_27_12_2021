@@ -8,7 +8,7 @@ namespace Hau.GUI.DTO
 {
    public class PhongDTO
     {
-        public string MaPhong { get; set; }
+        public int MaPhong { get; set; }
         public string TenPhong { get; set; }
     }
 }

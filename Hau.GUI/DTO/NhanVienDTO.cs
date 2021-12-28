@@ -10,9 +10,12 @@ namespace Hau.GUI.DTO
     {
         public string MaNV { get; set; }
         public string TenNV { get; set; }
-        public DateTime NgaySinh{ get; set; }
+        public DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
-        public string NoiSinh  { get; set; }
-        public string MaPhong { get; set; }
+        public string NoiSinh { get; set; }
+        public PhongDTO TenPhong { get; set; }
+
+        public string MaPhong{
+            get { return TenPhong.TenPhong; } }
     }
 }
