@@ -305,6 +305,8 @@ namespace Hau.GUI
             this.dataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataView.Size = new System.Drawing.Size(1111, 365);
             this.dataView.TabIndex = 4;
+            this.dataView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataView_CellContentClick);
+            this.dataView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataView_RowEnter);
             // 
             // Form1
             // 
@@ -316,6 +318,7 @@ namespace Hau.GUI
             this.Controls.Add(this.dataView);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

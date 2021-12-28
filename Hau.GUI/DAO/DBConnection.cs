@@ -13,7 +13,7 @@ namespace Hau.GUI.DAO
         public SqlConnection CreateConnection()
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @"Data Source=DESKTOP-7FIQ32C\SQLEXPRESS;Initial Catalog=sale;User Id=sa;Password=sa";
+            conn.ConnectionString = @"Data Source=DESKTOP-7FIQ32C\SQLEXPRESS;Initial Catalog=QLNV;User Id=sa;Password=sa";
             return conn;
         }
     }

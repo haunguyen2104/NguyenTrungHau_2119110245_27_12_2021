@@ -8,35 +8,34 @@ using System.Threading.Tasks;
 
 namespace Hau.GUI.DAO
 {
-    class NhanVienDAO
+
+    public class NhanVienDAO : DBConnection
     {
-        public class CustomerDAL : DBConnection
+        //slide 62
+        public List<NhanVienDTO> ReadNhanVien()
         {
-            //slide 62
-            public List<NhanVienDTO> ReadNhanVien()
+            SqlConnection conn = CreateConnection();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Select MaNV,TenNV,NgaySinh,GioiTinh,NoiSinh,TenPhong from NhanVien NV, Phong P where NV.MaPhong=P.MaPhong ", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            List<NhanVienDTO> lstCus = new List<NhanVienDTO>();
+            PhongDAO are = new PhongDAO();
+            while (reader.Read())
             {
-                SqlConnection conn = CreateConnection();
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("Select * From  NhanVien", conn);
-                SqlDataReader reader = cmd.ExecuteReader();
+                NhanVienDTO cus = new NhanVienDTO();
+                cus.MaNV = reader["MaNV"].ToString();
+                cus.TenNV = reader["TenNV"].ToString();
+                cus.NgaySinh = DateTime.Parse(reader["NgaySinh"].ToString());
+                cus.GioiTinh = reader["GioiTinh"].ToString();
+                cus.NoiSinh = reader["NoiSinh"].ToString();
 
-                List<NhanVienDTO> lstCus = new List<NhanVienDTO>();
-                PhongDAO are = new PhongDAO();
-                while (reader.Read())
-                {
-                    NhanVienDTO cus = new NhanVienDTO();
-                    cus.MaNV = reader["MaNV"].ToString();
-                    cus.TenNV = reader["TenNV"].ToString();
-                    cus.NgaySinh = DateTime.Parse(reader["NgaySinh"].ToString());
-                    cus.GioiTinh = reader["GioiTinh"].ToString();
-                    cus.NoiSinh = reader["NoiSinh"].ToString();
-
-                    lstCus.Add(cus);
-                }
-                conn.Close();
-                return lstCus;
+                lstCus.Add(cus);
             }
-        
+            conn.Close();
+            return lstCus;
+        }
+
 
         public void EditNhanVien(NhanVienDTO cus)
         {
@@ -72,6 +71,6 @@ namespace Hau.GUI.DAO
             conn.Close();
         }
 
-        }
     }
+
 }
