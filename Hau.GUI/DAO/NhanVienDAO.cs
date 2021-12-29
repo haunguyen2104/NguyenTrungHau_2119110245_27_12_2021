@@ -16,11 +16,11 @@ namespace Hau.GUI.DAO
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Select MaNV,TenNV,NgaySinh,GioiTinh,NoiSinh,TenPhong from NhanVien NV, Phong P where NV.MaPhong=P.MaPhong ", conn);
+            SqlCommand cmd = new SqlCommand("Select * from NhanVien", conn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             List<NhanVienDTO> lstCus = new List<NhanVienDTO>();
-            PhongDAO are = new PhongDAO();
+            PhongDAO phg = new PhongDAO();
             while (reader.Read())
             {
                 NhanVienDTO cus = new NhanVienDTO();
@@ -29,6 +29,7 @@ namespace Hau.GUI.DAO
                 cus.NgaySinh = DateTime.Parse(reader["NgaySinh"].ToString());
                 cus.GioiTinh = reader["GioiTinh"].ToString();
                 cus.NoiSinh = reader["NoiSinh"].ToString();
+                cus.Phong = phg.ReadPhong(int.Parse(reader["MaPhong"].ToString()));
 
                 lstCus.Add(cus);
             }
@@ -41,10 +42,13 @@ namespace Hau.GUI.DAO
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Update NhanVien set TenNV=@TenNV,MaPhong=@MaPhong where MaNV=@MaNV", conn);
+            SqlCommand cmd = new SqlCommand("Update NhanVien set TenNV=@TenNV,NgaySinh=@NgaySinh,GioiTinh=@GioiTinh,NoiSinh=@NoiSinh,MaPhong=@MaPhong where MaNV=@MaNV", conn);
             cmd.Parameters.Add(new SqlParameter("@MaNV", cus.MaNV));
             cmd.Parameters.Add(new SqlParameter("@TenNV", cus.TenNV));
-            cmd.Parameters.Add(new SqlParameter("@MaPhong", cus.MaPhong));
+            cmd.Parameters.Add(new SqlParameter("@NgaySinh", cus.NgaySinh));
+            cmd.Parameters.Add(new SqlParameter("@GioiTinh", cus.GioiTinh));
+            cmd.Parameters.Add(new SqlParameter("@NoiSinh", cus.NoiSinh));
+            cmd.Parameters.Add(new SqlParameter("@MaPhong", cus.Phong.MaPhong));
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -63,10 +67,13 @@ namespace Hau.GUI.DAO
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("insert into NhanVien values(@MaNV,@TenNV,@MaPhong) ", conn);
+            SqlCommand cmd = new SqlCommand("insert into NhanVien values(@MaNV,@TenNV,@NgaySinh,@GioiTinh,@NoiSinh,@MaPhong) ", conn);
             cmd.Parameters.Add(new SqlParameter("@MaNV", cus.MaNV));
             cmd.Parameters.Add(new SqlParameter("@TenNV", cus.TenNV));
-            cmd.Parameters.Add(new SqlParameter("@MaPhong", cus.MaPhong));
+            cmd.Parameters.Add(new SqlParameter("@NgaySinh", cus.NgaySinh));
+            cmd.Parameters.Add(new SqlParameter("@GioiTinh", cus.GioiTinh));
+            cmd.Parameters.Add(new SqlParameter("@NoiSinh", cus.NoiSinh));
+            cmd.Parameters.Add(new SqlParameter("@MaPhong", cus.Phong.MaPhong));
             cmd.ExecuteNonQuery();
             conn.Close();
         }

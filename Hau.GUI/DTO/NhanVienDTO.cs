@@ -13,10 +13,9 @@ namespace Hau.GUI.DTO
         public DateTime NgaySinh { get; set; }
         public string GioiTinh { get; set; }
         public string NoiSinh { get; set; }
-        public int MaPhong { get; set; }
-        public PhongDTO TenPhong { get; set; }
+        public PhongDTO Phong { get; set; }
 
-        //public string MaPhong{
-        //    get { return TenPhong.TenPhong; } }
+        public string TenPhong{
+           get { return Phong.TenPhong; } }
     }
 }

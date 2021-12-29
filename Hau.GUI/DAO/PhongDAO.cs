@@ -14,7 +14,7 @@ namespace Hau.GUI.DAO
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from phong", conn);
+            SqlCommand cmd = new SqlCommand("select * from Phong", conn);
             SqlDataReader reader = cmd.ExecuteReader();
   
 
