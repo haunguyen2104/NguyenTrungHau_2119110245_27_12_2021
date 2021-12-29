@@ -44,26 +44,15 @@ namespace Hau.GUI
             else
             {
                 cusBLL.NewNhanVien(nv);
-                dataView.Rows.Add(nv.MaNV,nv.TenNV,nv.NgaySinh,nv.GioiTinh,nv.NoiSinh,nv.Phong.TenPhong);
+                dataView.Rows.Add(nv.MaNV, nv.TenNV, nv.NgaySinh, nv.GioiTinh, nv.NoiSinh, nv.Phong.TenPhong);
             }
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            NhanVienDTO nv = new  NhanVienDTO();
+            NhanVienDTO nv = new NhanVienDTO();
             nv.MaNV = tbMa.Text;
-            //nv.TenNV = tbTen.Text;
-            //nv.NgaySinh = dtNgaySinh.Value;
-            //if (ckbGioiTinh.Checked)
-            //{
-            //    nv.GioiTinh = ckbGioiTinh.Text;
-            //}
-            //else
-            //{
-            //    nv.GioiTinh = "Nữ";
-            //}
-            //nv.NoiSinh = tbNoiSinh.Text;
-            //nv.Phong = (PhongDTO)cbPhong.SelectedItem;
+
             cusBLL.DeleteNhanVien(nv);
             int index = dataView.CurrentCell.RowIndex;
             dataView.Rows.RemoveAt(index);
@@ -119,7 +108,7 @@ namespace Hau.GUI
 
         private void dataView_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             int index = e.RowIndex;
             DataGridViewRow row = dataView.Rows[index];
             if (row.Cells[0].Value != null)
@@ -131,19 +120,19 @@ namespace Hau.GUI
                 tbNoiSinh.Text = row.Cells[4].Value.ToString();
                 cbPhong.Text = row.Cells[5].Value.ToString();
             }
-            
+
         }
 
-       
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
             List<NhanVienDTO> lstCus = cusBLL.ReadNhanVien();
             foreach (NhanVienDTO cus in lstCus)
             {
-                dataView.Rows.Add(cus.MaNV, cus.TenNV, cus.NgaySinh,cus.GioiTinh,cus.NoiSinh,cus.TenPhong);
+                dataView.Rows.Add(cus.MaNV, cus.TenNV, cus.NgaySinh, cus.GioiTinh, cus.NoiSinh, cus.TenPhong);
             }
-            List<PhongDTO> lstPhong= phgBLL.ReadPhongList();
+            List<PhongDTO> lstPhong = phgBLL.ReadPhongList();
             foreach (PhongDTO phong in lstPhong)
             {
                 cbPhong.Items.Add(phong);
