@@ -1,6 +1,7 @@
 ﻿using Hau.GUI.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,8 @@ namespace Hau.GUI.DAO
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Select * from NhanVien", conn);
+            SqlCommand cmd = new SqlCommand("getAllNV", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
             SqlDataReader reader = cmd.ExecuteReader();
 
             List<NhanVienDTO> lstCus = new List<NhanVienDTO>();
@@ -42,7 +44,8 @@ namespace Hau.GUI.DAO
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Update NhanVien set TenNV=@TenNV,NgaySinh=@NgaySinh,GioiTinh=@GioiTinh,NoiSinh=@NoiSinh,MaPhong=@MaPhong where MaNV=@MaNV", conn);
+            SqlCommand cmd = new SqlCommand("Update_NV", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@MaNV", cus.MaNV));
             cmd.Parameters.Add(new SqlParameter("@TenNV", cus.TenNV));
             cmd.Parameters.Add(new SqlParameter("@NgaySinh", cus.NgaySinh));
@@ -58,7 +61,8 @@ namespace Hau.GUI.DAO
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Delete from NhanVien where MaNV=@MaNV", conn);
+            SqlCommand cmd = new SqlCommand("Delete_NV", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@MaNV", cus.MaNV));
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -67,7 +71,8 @@ namespace Hau.GUI.DAO
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("insert into NhanVien values(@MaNV,@TenNV,@NgaySinh,@GioiTinh,@NoiSinh,@MaPhong) ", conn);
+            SqlCommand cmd = new SqlCommand("Insert_NV", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@MaNV", cus.MaNV));
             cmd.Parameters.Add(new SqlParameter("@TenNV", cus.TenNV));
             cmd.Parameters.Add(new SqlParameter("@NgaySinh", cus.NgaySinh));

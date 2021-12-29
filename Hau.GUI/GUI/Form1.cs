@@ -29,7 +29,7 @@ namespace Hau.GUI
             nv.NgaySinh = dtNgaySinh.Value;
             if (ckbGioiTinh.Checked)
             {
-                nv.GioiTinh = ckbGioiTinh.Text;
+                nv.GioiTinh = "Nam";
             }
             else
             {
@@ -53,9 +53,13 @@ namespace Hau.GUI
             NhanVienDTO nv = new NhanVienDTO();
             nv.MaNV = tbMa.Text;
 
-            cusBLL.DeleteNhanVien(nv);
-            int index = dataView.CurrentCell.RowIndex;
-            dataView.Rows.RemoveAt(index);
+            if(MessageBox.Show("Bạn có chắn chắn muốn xóa nhân viên này không?","Thông báo.",MessageBoxButtons.OKCancel,MessageBoxIcon.Question)==DialogResult.OK)
+            {
+                cusBLL.DeleteNhanVien(nv);
+                int index = dataView.CurrentCell.RowIndex;
+                dataView.Rows.RemoveAt(index);
+                MessageBox.Show("Xóa thành công.", "Thông báo.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }    
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -116,7 +120,14 @@ namespace Hau.GUI
                 tbMa.Text = row.Cells[0].Value.ToString();
                 tbTen.Text = row.Cells[1].Value.ToString();
                 dtNgaySinh.Text = row.Cells[2].Value.ToString();
-                ckbGioiTinh.Text = row.Cells[3].Value.ToString();
+                if (row.Cells[3].Value.ToString() != "Nam")
+                {
+                    ckbGioiTinh.Checked = false;
+                }
+                else
+                {
+                    ckbGioiTinh.Checked = true;
+                }
                 tbNoiSinh.Text = row.Cells[4].Value.ToString();
                 cbPhong.Text = row.Cells[5].Value.ToString();
             }
